@@ -8,7 +8,7 @@
         protected $data = array();	  // parameters for view components
         protected $id;	// identifier for our content
         protected $choices = array(// our menu navbar
-            'Home' => '/'
+            'Home' => '/', 'Gallery' => '/gallery', 'About' => '/about'
         );
         /**
          * Constructor.
@@ -18,7 +18,7 @@
         {
             parent::__construct();
             $this->data = array();
-            $this->data['title'] = 'Demo Retro Diner';
+            $this->data['pagetitle'] = 'Sample Image Gallery';
             $this->load->library('parser');
         }
         /**
@@ -26,7 +26,7 @@
          */
         function render()
         {
-//		$this->data['menubar'] = build_menu_bar($this->choices);
+    		$this->data['menubar'] = build_menu_bar($this->choices);
             $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
             $this->data['data'] = &$this->data;
             $this->parser->parse('_template', $this->data);
